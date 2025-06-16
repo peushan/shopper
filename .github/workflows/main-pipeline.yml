@@ -36,22 +36,8 @@ jobs:
       - name: Display Maven version
         run: mvn -version
 
-      - name: Cache local Maven repository
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
       - name: Run Selenium Tests
         run: mvn clean test
-        env:
-          # Add any environment variables your tests need, e.g., browser type, URL
-          BROWSER: chrome
-          # Add BrowserStack credentials if needed
-          # BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-          # BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
       #Optional: Add steps to upload test results as artifacts
       - name: Upload test results
