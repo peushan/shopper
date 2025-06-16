@@ -16,17 +16,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Maven 3.6.3
+        run: |
+            wget https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+            tar xzvf apache-maven-3.6.3-bin.tar.gz
+            sudo mv apache-maven-3.6.3 /opt/maven
+            echo "MAVEN_HOME=/opt/maven" >> $GITHUB_ENV
+            echo "/opt/maven/bin" >> $GITHUB_PATH
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: Set up Maven 3.6.3
-        uses: s4u/setup-maven-action@v1.4.0
-        with:
-          maven-version: '3.6.3'
-          java-setup: 'false'   # <-- pre
 
       - name: Display Java version
         run: java -version
