@@ -15,11 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 18
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'  # or 'zulu', 'oracle', 'adopt', etc.
-          java-version: '18'
+          distribution: 'temurin'  # required
+          java-version: '17'
 
       - name: Set up Maven 3.6.3
         uses: s4u/setup-maven-action@v1.4.0
