@@ -27,8 +27,8 @@ public class BaseClass {
         ChromeOptions options = new ChromeOptions();
 
         // Detect if running on GitHub Actions (or any CI)
-        String githubAction = System.getenv("GITHUB_ACTIONS");
-        if (Boolean.parseBoolean(githubAction)) {
+        //String githubAction = System.getenv("GITHUB_ACTIONS");
+        //if (Boolean.parseBoolean(githubAction)) {
             options.addArguments("--headless=new"); // Required for Chrome 109+
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
@@ -39,7 +39,7 @@ public class BaseClass {
             Path tempUserDataDir = Files.createTempDirectory("chrome-user-data");
             options.addArguments("--user-data-dir=" + tempUserDataDir.toAbsolutePath());
 
-        }
+        //}
 
         // Initialize ChromeDriver with options
         driver = new ChromeDriver(options);

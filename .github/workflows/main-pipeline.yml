@@ -37,7 +37,7 @@ jobs:
         run: mvn -version
 
       - name: Run Selenium Tests
-        run: mvn clean test
+        run: mvn test
 
       #Optional: Add steps to upload test results as artifacts
       - name: Upload test results
